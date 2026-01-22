@@ -11,6 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Create .env file
+        run: |
+          echo "VITE_FIREBASE_API_KEY=AIzaSyCOEaVYl3r_mGhE3BzwSzoH4cBz4kZ_zZQ" > .env
+          echo "VITE_FIREBASE_AUTH_DOMAIN=dansharia.firebaseapp.com" >> .env
+          echo "VITE_FIREBASE_PROJECT_ID=dansharia" >> .env
+          echo "VITE_FIREBASE_STORAGE_BUCKET=dansharia.firebasestorage.app" >> .env
+          echo "VITE_FIREBASE_MESSAGING_SENDER_ID=547887124610" >> .env
+          echo "VITE_FIREBASE_APP_ID=1:547887124610:web:4e579412d87471d24be49b" >> .env
       - run: npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
